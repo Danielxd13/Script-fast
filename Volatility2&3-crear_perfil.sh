@@ -62,22 +62,21 @@ sudo apt install linux-image-$(uname -r) linux-headers-$(uname -r)
 
 sudo apt install dwarfdump
 
-cd volatility/
+cd volatility/tools/linux/
 
-nano tools/linux/module.c  || añadir al final --> MODULE_LICENSE("GPL");
+nano module.c  || añadir al final --> MODULE_LICENSE("GPL");
 
 make
 
-cd ../..
-
-|| sudo zip volatility/plugins/overlays/linux/$(lsb_release -si)_$(uname -r)_profile.zip tools/linux/module.dwarf /boot/System.map-$(uname -r)
+## con este comando es que creamos perfil que es el que se pasara a nuestra maquina forense para administrarlo y porder utilizarlo
 || sudo zip $(lsb_release -i -s)_$(uname -r)_profile.zip ./module.dwarf /boot/System.map-$(uname -r)
+|| sudo zip volatility/plugins/overlays/linux/$(lsb_release -si)_$(uname -r)_profile.zip tools/linux/module.dwarf /boot/System.map-$(uname -r)
 
 ## ~/volatility/tools/linux/
 mv Ubuntu_$(uname -r)_profile.zip ../../volatility/plugins/overlays/linux/
 cd ../../
-python2.7 vol.py --info | grep Ubuntu
-
+|| python2.7 vol.py --info | grep Ubuntu
+|| sudo python2.7 vol.py --info | grep Ubuntu
 ## comprobacion de la imagen
 python2.7 vol.py --profile=LinuxUbuntu"version generado" -f "volcado".mem linux_banner
 
