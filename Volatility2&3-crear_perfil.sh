@@ -4,21 +4,21 @@
 
 sudo apt update
 
-sudo apt install -y build-essential git libdistorm3-dev yara libraw1394-11 libcapstone-dev tzdata
+sudo apt install -y build-essential git libdistorm3-dev yara libraw1394-11 libcapstone-dev tzdata &&
 
-sudo apt install -y python2.7 python2.7-dev libpython2.7-dev curl 
+sudo apt install -y python2.7 python2.7-dev libpython2.7-dev curl &&
 
-curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py 
+curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py &&
 
-sudo python2.7 get-pip.py 
+sudo python2.7 get-pip.py &&
 
-sudo python2.7 -m pip install -U setuptools wheel
+sudo python2.7 -m pip install -U setuptools wheel &&
 
-python2.7 -m pip install -U distorm3 yara pycrypto pillow openpyxl ujson pytz ipython capstone 
+python2.7 -m pip install -U distorm3 yara pycrypto pillow openpyxl ujson pytz ipython capstone &&
 
-sudo python2.7 -m pip install yara
+sudo python2.7 -m pip install yara &&
 
-sudo ln -s /usr/local/lib/python2.7/dist-packages/usr/lib/libyara.so /usr/lib/libyara.so
+sudo ln -s /usr/local/lib/python2.7/dist-packages/usr/lib/libyara.so /usr/lib/libyara.so 
 
 
 
