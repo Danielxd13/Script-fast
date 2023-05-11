@@ -64,9 +64,10 @@ sudo apt install dwarfdump
 
 cd volatility/tools/linux/
 
-nano module.c  || añadir al final --> MODULE_LICENSE("GPL");
+|| nano module.c  || añadir al final --> MODULE_LICENSE("GPL");
+|| echo 'MODULE_LICENSE("GPL");' >> module.c
 
-make
+make 
 
 ## con este comando es que creamos perfil que es el que se pasara a nuestra maquina forense para administrarlo y porder utilizarlo
 || sudo zip $(lsb_release -i -s)_$(uname -r)_profile.zip ./module.dwarf /boot/System.map-$(uname -r)
