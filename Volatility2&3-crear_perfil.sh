@@ -2,7 +2,7 @@
 
 #Pasos para isntalar volatility 2.6
 
-sudo apt update
+sudo apt update &&
 
 sudo apt install -y build-essential git libdistorm3-dev yara libraw1394-11 libcapstone-dev tzdata &&
 
@@ -26,13 +26,13 @@ sudo ln -s /usr/local/lib/python2.7/dist-packages/usr/lib/libyara.so /usr/lib/li
 
 
 
-git clone https://github.com/volatilityfoundation/volatility3.git
+git clone https://github.com/volatilityfoundation/volatility3.git &&
 
-cd volatility3
+cd volatility3 &&
 
-python3 vol.py --help 
+python3 vol.py --help && 
 
-cd ..
+cd ..  
 
 
 
@@ -40,13 +40,13 @@ cd ..
 
 
 
-git clone https://github.com/volatilityfoundation/volatility.git 
+git clone https://github.com/volatilityfoundation/volatility.git &&
 
-cd volatility 
+cd volatility &&
 
-python2.7 vol.py --help
+python2.7 vol.py --help &&
 
-cd ..
+cd .. 
 
 
 
@@ -58,26 +58,26 @@ cd ..
 
 
 
-sudo apt install linux-image-$(uname -r) linux-headers-$(uname -r)
+sudo apt install linux-image-$(uname -r) linux-headers-$(uname -r) &&
 
-sudo apt install dwarfdump
+sudo apt install dwarfdump &&
 
-cd volatility/tools/linux/
+cd volatility/tools/linux/ &&
 
-|| nano module.c  || añadir al final --> MODULE_LICENSE("GPL");
-|| echo 'MODULE_LICENSE("GPL");' >> module.c
+echo 'MODULE_LICENSE("GPL");' >> module.c &&
+# || nano module.c  || añadir al final --> MODULE_LICENSE("GPL");
 
-make 
+make &&
 
 ## con este comando es que creamos perfil que es el que se pasara a nuestra maquina forense para administrarlo y porder utilizarlo
-|| sudo zip $(lsb_release -i -s)_$(uname -r)_profile.zip ./module.dwarf /boot/System.map-$(uname -r)
-|| sudo zip volatility/plugins/overlays/linux/$(lsb_release -si)_$(uname -r)_profile.zip tools/linux/module.dwarf /boot/System.map-$(uname -r)
+sudo zip $(lsb_release -i -s)_$(uname -r)_profile.zip ./module.dwarf /boot/System.map-$(uname -r) &&
+# || sudo zip volatility/plugins/overlays/linux/$(lsb_release -si)_$(uname -r)_profile.zip tools/linux/module.dwarf /boot/System.map-$(uname -r)
 
 ## ~/volatility/tools/linux/
-mv Ubuntu_$(uname -r)_profile.zip ../../volatility/plugins/overlays/linux/
-cd ../../
-|| python2.7 vol.py --info | grep Ubuntu
-|| sudo python2.7 vol.py --info | grep Ubuntu
+mv Ubuntu_$(uname -r)_profile.zip ../../volatility/plugins/overlays/linux/ &&
+cd ../../ &&
+# || python2.7 vol.py --info | grep Ubuntu
+sudo python2.7 vol.py --info | grep Ubuntu 
 ## comprobacion de la imagen
-python2.7 vol.py --profile=LinuxUbuntu"version generado" -f "volcado".mem linux_banner
+## python2.7 vol.py --profile=LinuxUbuntu"version generado" -f "volcado".mem linux_banner
 
