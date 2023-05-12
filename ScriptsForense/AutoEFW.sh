@@ -95,7 +95,7 @@ cat $unidad/var/lib/dhclient >>  $carpeta/red/dhcp.txt
 cat $unidad/var/lib/dhcp >>  $carpeta/red/dhcp.txt
 
 #Fecha instalacion aproximada
-echo "Recuperando informaci�n de red..."
+echo "Fecha instalacion aproximada ..."
 mkdir $carpeta/instalacion
 stat -c %w $unidad/lost+found  > /$carpeta/instalacion/instalacion.txt
 sudo debugfs -R 'stat /lost+found' /dev/sda1 >> /$carpeta/instalacion/instalacion.txt
