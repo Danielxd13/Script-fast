@@ -22,7 +22,7 @@ sudo python2.7 -m pip install -U setuptools Wheel &&
 python2.7 -m pip install -U distorm3 yara pycrypto pillow openpyxl ujson pytz ipython capstone &&
 sudo python2.7 -m pip install yara &&
 sudo ln -s /usr/local/lib/python2.7/dist-packages/usr/lib/libyara.so /usr/lib/libyara.so &&
-sudo apt install python-minimal -y &&
+udo apt install python2-minimal -y &&
 git clone https://github.com/volatilityfoundation/volatility.git &&
 python2.7 volatility/vol.py --help  #comprobacion de que funciona
 echo "Si te aparecio la ayuda supuestamente es que te funciona"
